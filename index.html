@@ -1,3 +1,152 @@
-kuba.html
-script.js
-style.css
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <title>Эркештам Логистика</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+
+        header {
+            background-color: #1f3c88;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 220px;
+            display: block;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        footer {
+            background: #1f3c88;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #ecf0f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Эркештам жолундагы жүк ташуу логистикасы</h1>
+    <p>Логистиканы башкаруу системасы</p>
+</header>
+
+<nav>
+    <a href="#about">Маалымат</a>
+    <a href="#add">Жүк каттоо</a>
+    <a href="#list">Жүктөр тизмеси</a>
+</nav>
+
+<section id="about">
+    <h2>Система жөнүндө</h2>
+    <p>
+        Бул веб-система Эркештам жолунда жүк ташууну
+        каттоо, көзөмөлдөө жана башкаруу үчүн иштелип чыкты.
+    </p>
+</section>
+
+<section id="add">
+    <h2>Жүк каттоо</h2>
+    <input type="text" id="cargo" placeholder="Жүктүн аталышы">
+    <input type="text" id="from" placeholder="Кайдан (мис: Ош)">
+    <input type="text" id="to" placeholder="Каякка (мис: Эркештам)">
+    <input type="text" id="driver" placeholder="Айдоочунун аты">
+    <button onclick="addCargo()">Кошуу</button>
+</section>
+
+<section id="list">
+    <h2>Катталган жүктөр</h2>
+    <ul id="cargoList"></ul>
+</section>
+
+<footer>
+    <p>© 2025 Эркештам Логистика Системасы</p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+    function addCargo() {
+        let cargo = document.getElementById("cargo").value;
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let driver = document.getElementById("driver").value;
+
+        if (cargo === "" || from === "" || to === "" || driver === "") {
+            alert("Бардык талааларды толтуруңуз!");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent =
+            "Жүк: " + cargo +
+            " | Кайдан: " + from +
+            " | Каякка: " + to +
+            " | Айдоочу: " + driver;
+
+        document.getElementById("cargoList").appendChild(li);
+
+        document.getElementById("cargo").value = "";
+        document.getElementById("from").value = "";
+        document.getElementById("to").value = "";
+        document.getElementById("driver").value = "";
+    }
+</script>
+
+</body>
+</html>
